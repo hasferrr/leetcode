@@ -1,29 +1,37 @@
+class StackNode {
+  val: number
+  min: number
+  next: StackNode
+  constructor(val: number, min: number, next: StackNode) {
+    this.val = val
+    this.min = min
+    this.next = next
+  }
+}
+
 class MinStack {
-  stack: { val: number, min: number }[]
+  stack: StackNode
   constructor() {
-    this.stack = []
+    this.stack
   }
 
   push(val: number): void {
-    if (this.stack.length === 0) {
-      this.stack.push({ val, min: val })
+    if (!this.stack) {
+      this.stack = new StackNode(val, val, null as unknown as StackNode)
       return
     }
-    this.stack.push({
-      val,
-      min: Math.min(val, this.stack[this.stack.length - 1].min)
-    })
+    this.stack = new StackNode(val, Math.min(val, this.stack.min), this.stack)
   }
 
   pop(): void {
-    this.stack.pop()
+    this.stack = this.stack.next
   }
 
   top(): number {
-    return this.stack[this.stack.length - 1].val
+    return this.stack.val
   }
 
   getMin(): number {
-    return this.stack[this.stack.length - 1].min
+    return this.stack.min
   }
 }
