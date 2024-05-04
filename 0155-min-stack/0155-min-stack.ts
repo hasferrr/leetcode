@@ -1,34 +1,29 @@
 class MinStack {
-  stack: number[]
-  mins: number[]
+  stack: { val: number, min: number }[]
   constructor() {
     this.stack = []
-    this.mins = []
   }
 
   push(val: number): void {
-    this.stack.push(val)
-    if (!this.mins.length) {
-      this.mins.push(val)
+    if (this.stack.length === 0) {
+      this.stack.push({ val, min: val })
       return
     }
-    if (val <= this.mins[this.mins.length - 1]) {
-      this.mins.push(val)
-      return
-    }
-    this.mins.push(this.mins[this.mins.length - 1])
+    this.stack.push({
+      val,
+      min: Math.min(val, this.stack[this.stack.length - 1].min)
+    })
   }
 
   pop(): void {
     this.stack.pop()
-    this.mins.pop()
   }
 
   top(): number {
-    return this.stack[this.stack.length - 1]
+    return this.stack[this.stack.length - 1].val
   }
 
   getMin(): number {
-    return this.mins[this.mins.length - 1]
+    return this.stack[this.stack.length - 1].min
   }
 }
