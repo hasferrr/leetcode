@@ -1,62 +1,43 @@
-class MyNode {
-  val: number
-  prev: MyNode
-  next: MyNode
-  constructor(val: number, prev: MyNode, next: MyNode) {
-    this.val = val
-    this.prev = prev
-    this.next = next
-  }
-}
-
 class MyStack {
-  head: MyNode
-  tail: MyNode
+  stack: number[]
   constructor() {
-    this.head = null as unknown as MyNode
-    this.tail = this.head
+    this.stack = []
   }
 
   push(x: number): void {
-    const newNode = new MyNode(
-      x,
-      null as unknown as MyNode,
-      null as unknown as MyNode,
-    )
-    if (!this.head) {
-      this.head = newNode
-      this.tail = this.head
-      return
-    }
-    this.tail.next = newNode
-    newNode.prev = this.tail
-    this.tail = newNode
+    this.stack.push(x)
   }
 
   pop(): number {
-    if (!this.head) {
-      throw new Error('queue is empty')
+    let i = 0
+    const size = this.stack.length
+    while (true) {
+      const value = this.stack.shift() as number
+      i++
+      if (i === size) {
+        return value
+      }
+      this.stack.push(value)
     }
-    if (!this.head.next) {
-      const value = this.head.val
-      this.head = null as unknown as MyNode
-      this.tail = this.head
-      return value
-    }
-    const value = this.tail.val
-    this.tail.prev.next = null as unknown as MyNode
-    this.tail = this.tail.prev
-    return value
   }
 
   top(): number {
-    if (!this.head) {
-      throw new Error('queue is empty')
-    }
-    return this.tail.val
+    const value = this.pop()
+    this.stack.push(value)
+    return value
   }
 
   empty(): boolean {
-    return !this.head
+    return !this.stack.length
   }
 }
+
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * var obj = new MyStack()
+ * obj.push(x)
+ * var param_2 = obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.empty()
+ */
