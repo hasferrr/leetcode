@@ -11,66 +11,34 @@
  */
 
 function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
-  if (!lists.length) {
+  if (lists.length === 0) {
     return null
   }
 
-  let sortedListNode: ListNode = lists[0]
-
-  let i = 1
-  while (true) {
-    if (i === lists.length) {
-      return sortedListNode
+  let interval = 1
+  while (interval < lists.length) {
+    let i = 0
+    while (i + interval < lists.length) {
+      lists[i] = merge(lists[i], lists[i + interval])
+      i += 2 * interval
     }
-
-    let result = null as ListNode | null
-    let head = null as ListNode | null
-    let numsL: ListNode | null = sortedListNode
-    let numsR: ListNode | null = lists[i]
-
-    while (true) {
-      if (numsL === null) {
-        if (result === null) {
-          head = numsR
-        } else {
-          result.next = numsR
-        }
-        break
-      }
-      if (numsR === null) {
-        if (result === null) {
-          head = numsL
-        } else {
-          result.next = numsL
-        }
-        break
-      }
-
-      if (numsL.val <= numsR.val) {
-        if (result === null) {
-          head = new ListNode(numsL.val)
-          result = head
-        } else {
-          result.next = numsL
-          result = result.next
-        }
-        numsL = numsL.next
-        continue
-      }
-
-      if (result === null) {
-        head = new ListNode(numsR.val)
-        result = head
-      } else {
-        result.next = numsR
-        result = result.next
-      }
-      numsR = numsR.next
-    }
-
-    if (head) {
-      sortedListNode = head
-    }
-    i++
+    interval *= 2
   }
+
+  return lists[0]
+}
+
+function merge(list1: ListNode | null, list2: ListNode | null): ListNode | null {
+  if (!list1) {
+    return list2
+  }
+  if (!list2) {
+    return list1
+  }
+  if (list1.val <= list2.val) {
+    list1.next = merge(list1.next, list2)
+    return list1
+  }
+  list2.next = merge(list1, list2.next)
+  return list2
 }
