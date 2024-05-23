@@ -31,6 +31,8 @@ Contains but not limited to :
 - [x] Selection Sort
 - [x] Merge Sort
 - [x] Quick Sort
+- [x] Quick Select
+- [x] Partitioning
 - [x] Bucket Sort
 
 ### Binary Search
@@ -40,12 +42,12 @@ Contains but not limited to :
 
 ### Trees
 
-- [ ] Binary Tree
-- [ ] Binary Search Trees
-- [ ] Bst Insert And Remove
+- [x] Binary Tree
+- [x] Binary Search Trees
+- [x] BST Insert And Remove
 - [ ] Depth-First Search
 - [ ] Breadth-First Search
-- [ ] Bst Sets And Maps
+- [ ] BST Sets And Maps
 
 ### Backtracking
 
