@@ -13,24 +13,15 @@
  */
 
 function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
-  if (!root) {
-    return false
-  }
   function localHasPathSum(root: TreeNode | null, sum: number): boolean {
     if (!root) {
-      return sum === targetSum
+      return false
     }
-    if (root.left && root.right) {
-      return localHasPathSum(root.left, sum + root.val)
-      || localHasPathSum(root.right, sum + root.val)
+    if (!root.left && !root.right) {
+      return sum + root.val === targetSum
     }
-    if (root.left) {
-      return localHasPathSum(root.left, sum + root.val)
-    }
-    if (root.right) {
-      return localHasPathSum(root.right, sum + root.val)
-    }
-    return sum + root.val === targetSum
+    return localHasPathSum(root.left, sum + root.val)
+    || localHasPathSum(root.right, sum + root.val)
   }
   return localHasPathSum(root, 0)
 }
