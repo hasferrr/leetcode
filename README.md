@@ -45,9 +45,9 @@ Contains but not limited to :
 - [x] Binary Tree
 - [x] Binary Search Trees
 - [x] BST Insert And Remove
-- [ ] Depth-First Search
-- [ ] Breadth-First Search
-- [ ] BST Sets And Maps
+- [x] Depth-First Search
+- [x] Breadth-First Search
+- [x] BST Sets And Maps
 
 ### Backtracking
 
