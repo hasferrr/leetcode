@@ -51,7 +51,8 @@ Contains but not limited to :
 
 ### Backtracking
 
-- [ ] Tree Maze
+- [x] Tree Maze
+- [x] Generative Recursion
 
 ### Heap Priority  Queue
 
