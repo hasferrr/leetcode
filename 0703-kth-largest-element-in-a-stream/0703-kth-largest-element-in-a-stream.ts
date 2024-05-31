@@ -2,8 +2,8 @@ class KthLargest {
   heap: number[]
   k: number
   constructor(k: number, nums: number[]) {
-    // 1-Based Indexing Min Heap
-    this.heap = Array(1)
+    // 0-Based Indexing Min Heap
+    this.heap = []
     this.k = k
     for (const n of nums) {
       this.add(n)
@@ -16,11 +16,19 @@ class KthLargest {
     this.reorderUp(currentIndex)
   }
 
+  getParentIndex(i: number): number {
+    return Math.floor((i - 1) / 2)
+  }
+
+  getChildrenIndex(i: number): [number, number] {
+    return [2 * i + 1, 2 * i + 2]
+  }
+
   reorderUp(i: number): void {
-    const parentIndex = Math.floor(i / 2)
-    if (i === 1) {
+    if (i === 0) {
       return
     }
+    const parentIndex = this.getParentIndex(i)
     if (this.heap[i] < this.heap[parentIndex]) {
       this.swap(i, parentIndex)
       this.reorderUp(parentIndex)
@@ -32,32 +40,31 @@ class KthLargest {
   }
 
   add(val: number): number {
-    if (this.heap.length - 1 < this.k) {
+    if (this.heap.length < this.k) {
       this.insert(val)
-      return this.heap[1]
+      return this.heap[0]
     }
-    if (val > this.heap[1]) {
-      this.heap[1] = val
-      this.reorderDown(1)
+    if (val > this.heap[0]) {
+      this.heap[0] = val
+      this.reorderDown(0)
     }
-    return this.heap[1]
+    return this.heap[0]
   }
 
   reorderDown(i: number): void {
-    const hasLeftChild = 2 * i < this.heap.length
-    const hasRightChild = 2 * i + 1 < this.heap.length
+    const [l, r] = this.getChildrenIndex(i)
+    const hasLeftChild = l < this.heap.length
+    const hasRightChild = r < this.heap.length
     if (!hasLeftChild && !hasRightChild) {
       return
     }
     let childIndex
     if (!hasRightChild) {
-      childIndex = 2 * i
+      childIndex = l
     } else {
-      const left = this.heap[2 * i]
-      const right = this.heap[2 * i + 1]
-      childIndex = left < right
-        ? 2 * i
-        : 2 * i + 1
+      const left = this.heap[l]
+      const right = this.heap[r]
+      childIndex = left < right ? l : r
     }
     if (this.heap[i] > this.heap[childIndex]) {
       this.swap(i, childIndex)
