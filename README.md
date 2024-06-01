@@ -56,9 +56,9 @@ Contains but not limited to :
 
 ### Heap Priority  Queue
 
-- [ ] Heap Properties
-- [ ] Push And Pop
-- [ ] Heapify
+- [x] Heap Properties
+- [x] Push And Pop
+- [x] Heapify
 
 ### Hashing
 
