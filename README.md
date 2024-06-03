@@ -10,7 +10,7 @@ Other Resources (DSA):
 
 ## Contents
 
-Contains but not limited to :
+Contains but not limited to:
 
 ### Arrays
 
@@ -68,14 +68,14 @@ Contains but not limited to :
 ### Graphs
 
 - [ ] Intro To Graphs
-- [ ] Matrix Dfs
-- [ ] Matrix Bfs
+- [ ] Matrix DFS
+- [ ] Matrix BFS
 - [ ] Adjacency List
 
 ### Dynamic Programming
 
-- [ ] 1-Dimension Dp
-- [ ] 2-Dimension Dp
+- [ ] 1-Dimension DP
+- [ ] 2-Dimension DP
 
 ### Bit Manipulation
 
