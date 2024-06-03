@@ -62,8 +62,8 @@ Contains but not limited to :
 
 ### Hashing
 
-- [ ] Hash Usage
-- [ ] Hash Implementation
+- [x] Hash Usage
+- [x] Hash Implementation
 
 ### Graphs
 
