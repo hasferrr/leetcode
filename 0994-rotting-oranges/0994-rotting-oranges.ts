@@ -1,41 +1,36 @@
 function orangesRotting(grid: number[][]): number {
-  const directions = [
-    [0, 1], [1, 0], [0, -1], [-1, 0]
-  ]
+  const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
 
   const ROWS = grid.length
   const COLS = grid[0].length
 
-  // Collection of [row,col] of 2's
+  // Queues of [row,col] of 2's for bfs
   const queues = []
 
   // { key: row, value: Set of cols } representation
   let visited = new Map<number, Set<number>>()
+  
+  let freshOranges = 0
+  let minutes = -1
 
   let row = 0
   let col = 0
 
-  // Find an 1's areas that does not horizontally / vertically connected
-  // and search for 2's
-  while (true) {
-    if (grid[row][col] !== 0 && !inVisited(row, col)) {
-      const mark = visitNeighbour(row, col, false)
-      if (!mark) return -1
+  for (let row = 0; row < ROWS; row++) {
+    for (let col = 0; col < COLS; col++) {
+      if (grid[row][col] === 1) {
+        freshOranges++
+        continue
+      }
+      if (grid[row][col] === 2) {
+        queues.push([row, col])
+      }
     }
-    col++
-    if (col === COLS) {
-      col = 0
-      row++
-    }
-    if (row === ROWS) break
   }
 
-  if (!queues.length && !visited.size) return 0
+  if (!queues.length && !freshOranges) return 0
 
   // bfs
-  visited = new Map<number, Set<number>>()
-  let minutes = -1
-
   while (queues.length) {
     const qLen = queues.length
 
@@ -53,6 +48,7 @@ function orangesRotting(grid: number[][]): number {
         if (grid[newRow][newCol] === 1 && !inVisited(newRow, newCol)) {
           queues.push([newRow, newCol])
           pushToVisited(newRow, newCol)
+          freshOranges--
         }
       }
     }
@@ -60,28 +56,7 @@ function orangesRotting(grid: number[][]): number {
     minutes++
   }
 
-  return minutes
-
-  // dfs
-  function visitNeighbour(row: number, col: number, mark: boolean): boolean {
-    if (outOfBound(row, col)) {
-      return mark
-    }
-
-    if (grid[row][col] === 2) {
-      mark = true
-      queues.push([row, col])
-    }
-
-    if (grid[row][col] !== 0 && !inVisited(row, col)) {
-      pushToVisited(row, col)
-      for (const [dRow, dCol] of directions) {
-        mark = visitNeighbour(row + dRow, col + dCol, mark)
-      }
-    }
-
-    return mark
-  }
+  return freshOranges === 0 ? minutes : -1
 
   function pushToVisited(row: number, col: number) {
     if (!visited.has(row)) {
