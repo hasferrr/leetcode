@@ -13,7 +13,6 @@ function canFinish(numCourses: number, prerequisites: number[][]): boolean {
   }
 
   const visited = new Set<number>()
-  const traversed = new Set<number>()
 
   for (const key of prerequisitesMap.keys()) {
     if (!haveNoCycleDFS(key)) return false
@@ -24,19 +23,20 @@ function canFinish(numCourses: number, prerequisites: number[][]): boolean {
   function haveNoCycleDFS(key: number): boolean {
     const neighbours = prerequisitesMap.get(key)
 
-    if (traversed.has(key)) return true
+    if (visited.has(key)) {
+      return false
+    }
 
-    if (visited.has(key)) return false
-
-    if (!neighbours.length) return true
+    if (!neighbours.length) {
+      return true
+    }
 
     visited.add(key)
 
     for (const n of neighbours) {
       if (visited.has(n)) return false
-      const noCycle = haveNoCycleDFS(n)
-      if (!noCycle) return false
-      traversed.add(n)
+      if (!haveNoCycleDFS(n)) return false
+      prerequisitesMap.set(n, [])
     }
 
     visited.delete(key)
