@@ -1,30 +1,34 @@
+// Tabulation (Bottom-up)
 function climbStairs(n: number): number {
-  if (n === 1) {
-    return 1
-  }
-  if (n === 2) {
-    return 2
-  }
+  if (n === 1) return 1
+  if (n === 2) return 2
+  const prev = [1, 2]
 
-  const memo = [1, 2]
-  let m = 3
+  let i = 3
   while (true) {
-    const sum = memo[1] + memo[0]
-    if (m === n) {
-      return sum
-    }
-    memo[0] = memo[1]
-    memo[1] = sum
-    m++
+    const sum = prev[0] + prev[1]
+    if (i === n) return sum
+    prev[0] = prev[1]
+    prev[1] = sum
+    i++
   }
 }
 
+// Memoization (Top-down)
 // function climbStairs(n: number): number {
-//   if (n === 1) {
-//     return 1
+//   function climb(n: number, memo: Map<number, number>): number {
+//     if (n === 1) return 1
+//     if (n === 2) return 2
+//     if (memo.has(n)) return memo.get(n)
+//     memo.set(n, climb(n - 1, memo) + climb(n - 2, memo))
+//     return memo.get(n)
 //   }
-//   if (n === 2) {
-//     return 2
-//   }
+//   return climb(n, new Map())
+// }
+
+// Recursion
+// function climbStairs(n: number): number {
+//   if (n === 1) return 1
+//   if (n === 2) return 2
 //   return climbStairs(n - 1) + climbStairs(n - 2)
 // }
