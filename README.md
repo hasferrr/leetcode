@@ -14,7 +14,6 @@ Contains but not limited to:
 
 ### Arrays
 
-- [x] RAM
 - [x] Static Arrays
 - [x] Dynamic Arrays
 - [x] Stacks
@@ -67,10 +66,9 @@ Contains but not limited to:
 
 ### Graphs
 
-- [ ] Intro To Graphs
-- [ ] Matrix DFS
-- [ ] Matrix BFS
-- [ ] Adjacency List
+- [x] Matrix DFS
+- [x] Matrix BFS
+- [x] Adjacency List
 
 ### Dynamic Programming
 
