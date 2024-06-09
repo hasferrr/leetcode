@@ -72,7 +72,10 @@ Contains but not limited to:
 
 ### Dynamic Programming
 
-- [ ] 1-Dimension DP
+- [x] Brute Force
+- [x] Memoization (Top-down)
+- [x] Tabulation (Bottom-Up)
+- [x] 1-Dimension DP
 - [ ] 2-Dimension DP
 
 ### Bit Manipulation
