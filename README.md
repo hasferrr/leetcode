@@ -76,7 +76,7 @@ Contains but not limited to:
 - [x] Memoization (Top-down)
 - [x] Tabulation (Bottom-Up)
 - [x] 1-Dimension DP
-- [ ] 2-Dimension DP
+- [x] 2-Dimension DP
 
 ### Bit Manipulation
 
