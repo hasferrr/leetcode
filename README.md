@@ -80,4 +80,4 @@ Contains but not limited to:
 
 ### Bit Manipulation
 
-- [ ] Bit Operator
+- [x] Bit Operator
