@@ -18,11 +18,23 @@ Contains but not limited to:
 - [x] Dynamic Arrays
 - [x] Stacks
 
+### Arrays (More)
+
+- [ ] Kadane's Algorithm
+- [ ] Sliding Window Fixed
+- [ ] Sliding Window Variable
+- [ ] Two Pointers
+- [ ] Prefix Sums
+
 ### Linked Lists
 
 - [x] Singly Linked Lists
 - [x] Doubly Linked Lists
 - [x] Queues
+
+### Linked Lists (More)
+
+- [ ] Fast and Slow Pointers
 
 ### Sorting
 
@@ -53,11 +65,21 @@ Contains but not limited to:
 - [x] Tree Maze
 - [x] Generative Recursion
 
-### Heap Priority  Queue
+### Backtracking (More)
+
+- [ ] Subsets
+- [ ] Combinations
+- [ ] Permutation
+
+### Heap Priority Queue
 
 - [x] Heap Properties
 - [x] Push And Pop
 - [x] Heapify
+
+### Heaps (More)
+
+- [ ] Two Heaps
 
 ### Hashing
 
@@ -70,6 +92,13 @@ Contains but not limited to:
 - [x] Matrix BFS
 - [x] Adjacency List
 
+### Graphs (More)
+
+- [ ] Dijkstra's Algorithm
+- [ ] Prim's Algorithm
+- [ ] Kruskal's Algorithm
+- [ ] Topological Sort
+
 ### Dynamic Programming
 
 - [x] Brute Force
@@ -77,6 +106,13 @@ Contains but not limited to:
 - [x] Tabulation (Bottom-Up)
 - [x] 1-Dimension DP
 - [x] 2-Dimension DP
+
+### Dynamic Programming (More)
+
+- [ ] 0-1 Knapsack
+- [ ] Unbounded Knapsack
+- [ ] Longest Common Subsequence (LCS)
+- [ ] Palindromes
 
 ### Bit Manipulation
 
