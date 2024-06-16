@@ -20,8 +20,8 @@ Contains but not limited to:
 
 ### Arrays (More)
 
-- [ ] Kadane's Algorithm
-- [ ] Sliding Window Fixed
+- [x] Kadane's Algorithm
+- [x] Sliding Window Fixed
 - [ ] Sliding Window Variable
 - [ ] Two Pointers
 - [ ] Prefix Sums
