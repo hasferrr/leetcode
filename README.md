@@ -7,6 +7,7 @@ Other Resources (DSA):
 - <https://neetcode.io/roadmap>
 - <https://tira.mooc.fi/spring-2024>
 - <https://www.crackingthecodinginterview.com>
+- <https://algo.monster/flowchart>
 
 ## Contents
 
