@@ -23,8 +23,8 @@ Contains but not limited to:
 
 - [x] Kadane's Algorithm
 - [x] Sliding Window Fixed
-- [ ] Sliding Window Variable
-- [ ] Two Pointers
+- [x] Sliding Window Variable
+- [x] Two Pointers
 - [ ] Prefix Sums
 
 ### Linked Lists
