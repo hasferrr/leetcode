@@ -25,7 +25,7 @@ Contains but not limited to:
 - [x] Sliding Window Fixed
 - [x] Sliding Window Variable
 - [x] Two Pointers
-- [ ] Prefix Sums
+- [x] Prefix Sums
 
 ### Linked Lists
 
@@ -35,7 +35,7 @@ Contains but not limited to:
 
 ### Linked Lists (More)
 
-- [ ] Fast and Slow Pointers
+- [ ] Fast and Slow Pointers (Floyd's Tortoise and Hare Algorithm)
 
 ### Sorting
 
