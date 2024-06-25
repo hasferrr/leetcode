@@ -25,26 +25,25 @@ class WordDictionary {
   }
 
   search(word: string): boolean {
-    return this.searchSlice(word, this.root)
+    return this.searchSlice(word, this.root, 0)
   }
 
-  searchSlice(word: string, root: TrieNode): boolean {
+  searchSlice(word: string, root: TrieNode, startIndex: number): boolean {
     let curr = root
 
-    for (let i = 0; i < word.length; i++) {
+    for (let i = startIndex; i < word.length; i++) {
       const char = word[i]
 
       if (char === '.') {
         let result = false
-        const mapIterator = curr.children[Symbol.iterator]()
 
-        for (const item of mapIterator) {
+        const mapIterator = curr.children[Symbol.iterator]()
+        for (const keyValue of mapIterator) {
           if (result) {
             break
           }
-          const key = item[0]
-          const newWord = `${key}${word.slice(i + 1)}`
-          result = result || this.searchSlice(newWord, curr)
+          const value = keyValue[1]
+          result = result || this.searchSlice(word, value, i + 1)
         }
 
         return result
