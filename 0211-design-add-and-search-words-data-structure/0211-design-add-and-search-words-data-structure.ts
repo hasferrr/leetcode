@@ -25,38 +25,35 @@ class WordDictionary {
   }
 
   search(word: string): boolean {
-    return this.searchCustom(word, 0, word[0], this.root)
+    return this.searchSlice(word, this.root)
   }
 
-  searchCustom(word: string, currentIndex: number, firstLetter: string, root: TrieNode): boolean {
+  searchSlice(word: string, root: TrieNode): boolean {
     let curr = root
 
-    if (firstLetter === '.') {
-      let result = false
-      curr.children.forEach((_, key: string) => {
-        result = result || this.searchCustom(word, currentIndex, key, curr)
-      })
-      return result
-    }
-    if (!curr.children.has(firstLetter)) {
-      return false
-    }
-    curr = curr.children.get(firstLetter)
-
-    currentIndex++
-
-    for (let i = currentIndex; i < word.length; i++) {
+    for (let i = 0; i < word.length; i++) {
       const char = word[i]
+
       if (char === '.') {
         let result = false
-        curr.children.forEach((_, key: string) => {
-          result = result || this.searchCustom(word, i, key, curr)
-        })
+        const mapIterator = curr.children[Symbol.iterator]()
+
+        for (const item of mapIterator) {
+          if (result) {
+            break
+          }
+          const key = item[0]
+          const newWord = `${key}${word.slice(i + 1)}`
+          result = result || this.searchSlice(newWord, curr)
+        }
+
         return result
       }
+
       if (!curr.children.has(char)) {
         return false
       }
+
       curr = curr.children.get(char)
     }
 
