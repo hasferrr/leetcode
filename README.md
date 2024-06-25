@@ -35,7 +35,8 @@ Contains but not limited to:
 
 ### Linked Lists (More)
 
-- [ ] Fast and Slow Pointers (Floyd's Tortoise and Hare Algorithm)
+- [x] Fast and Slow Pointers
+- [x] Floyd's Tortoise and Hare Algorithm
 
 ### Sorting
 
