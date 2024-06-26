@@ -5,16 +5,9 @@ class TrieNode {
     this.children = new Map<string, TrieNode>()
     this.word = false
   }
-}
-
-class Trie {
-  root: TrieNode
-  constructor() {
-    this.root = new TrieNode()
-  }
 
   addWord(word: string): void {
-    let curr = this.root
+    let curr: TrieNode = this
     for (const c of word) {
       if (!curr.children.has(c)) {
         curr.children.set(c, new TrieNode())
@@ -22,6 +15,14 @@ class Trie {
       curr = curr.children.get(c)
     }
     curr.word = true
+  }
+
+  isLeaf(): boolean {
+    return this.children.size === 0
+  }
+
+  pruneChild(char: string) {
+    this.children.delete(char)
   }
 }
 
@@ -32,7 +33,7 @@ function findWords(board: string[][], words: string[]): string[] {
   const result = []
   const visited = new Map<number, Set<number>>()
 
-  const trie = new Trie()
+  const trie = new TrieNode()
   for (const w of words) {
     trie.addWord(w)
   }
@@ -42,13 +43,13 @@ function findWords(board: string[][], words: string[]): string[] {
       if (result.length === words.length) {
         return result
       }
-      dfs(i, j, trie.root, '')
+      dfs(i, j, trie, '')
     }
   }
 
   return result
 
-  function dfs(row: number, col: number, node: TrieNode, currentWord: string) {
+  function dfs(row: number, col: number, node: TrieNode, currentWord: string): string | null {
     if (
       row === ROWS
       || col === COLS
@@ -57,7 +58,7 @@ function findWords(board: string[][], words: string[]): string[] {
       || !node.children.has(board[row][col])
       || visited.get(row)?.has(col)
     ) {
-      return
+      return null
     }
 
     const char = board[row][col]
@@ -75,20 +76,23 @@ function findWords(board: string[][], words: string[]): string[] {
     visited.get(row).add(col)
 
     const next = [
-      [1,0], [0,1], [-1,0], [0,-1]
+      [1, 0], [0, 1], [-1, 0], [0, -1]
     ]
 
-    for (const n of next) {
-      const newRow = row + n[0]
-      const newCol = col + n[1]
-      dfs(
-        newRow,
-        newCol,
-        node,
-        currentWord,
-      )
+    for (const [dx, dy] of next) {
+      const newRow = row + dx
+      const newCol = col + dy
+      const leafChar = dfs(newRow, newCol, node, currentWord)
+      if (leafChar) {
+        node.pruneChild(leafChar)
+      }
     }
 
     visited.get(row).delete(col)
+
+    if (node.isLeaf() && !node.word) {
+      return char
+    }
+    return null
   }
 }
