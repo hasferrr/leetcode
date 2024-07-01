@@ -62,6 +62,13 @@ Contains but not limited to:
 - [x] Breadth-First Search
 - [x] BST Sets And Maps
 
+### Trees (More)
+
+- [x] Trie
+- [ ] Union Find
+- [ ] Segment Tree
+- [ ] Iterative DFS
+
 ### Backtracking
 
 - [x] Tree Maze
