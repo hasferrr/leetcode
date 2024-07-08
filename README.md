@@ -66,7 +66,7 @@ Contains but not limited to:
 
 - [x] Trie
 - [x] Union Find (Disjoint Set)
-- [ ] Segment Tree
+- [x] Segment Tree
 - [ ] Iterative DFS
 
 ### Backtracking
