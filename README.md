@@ -76,9 +76,9 @@ Contains but not limited to:
 
 ### Backtracking (More)
 
-- [ ] Subsets
-- [ ] Combinations
-- [ ] Permutation
+- [x] Subsets
+- [x] Combinations
+- [x] Permutation
 
 ### Heap Priority Queue
 
@@ -88,7 +88,7 @@ Contains but not limited to:
 
 ### Heaps (More)
 
-- [ ] Two Heaps
+- [x] Two Heaps
 
 ### Hashing
 
