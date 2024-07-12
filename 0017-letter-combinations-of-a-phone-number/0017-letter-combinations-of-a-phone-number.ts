@@ -12,16 +12,18 @@ const letterMap = new Map([
 function letterCombinations(digits: string): string[] {
   if (!digits.length) return []
   const result = []
-  const dfs = (i: number, comb: string) => {
+  const dfs = (i: number, comb: string[]) => {
     if (i === digits.length) {
-      result.push(comb)
+      result.push(comb.join(''))
       return
     }
     const letter = letterMap.get(digits[i])!
     for (let j = 0; j < letter.length; j++) {
-      dfs(i + 1, comb + letter[j])
+      comb.push(letter[j])
+      dfs(i + 1, comb)
+      comb.pop()
     }
   }
-  dfs(0, '')
+  dfs(0, [])
   return result
 }
