@@ -13,11 +13,9 @@
  */
 
 function maxDepth(root: TreeNode | null): number {
-  const dfs = (root: TreeNode | null, h: number): number => {
-    if (!root) return h
-    const l = dfs(root.left, h + 1)
-    const r = dfs(root.right, h + 1)
-    return Math.max(l, r)
-  }
-  return dfs(root, 0)
+  if (!root) return 0
+  return Math.max(
+    maxDepth(root.left) + 1,
+    maxDepth(root.right) + 1,
+  )
 }
