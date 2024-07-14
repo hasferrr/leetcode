@@ -7,6 +7,7 @@ Other Resources (DSA):
 - <https://neetcode.io/roadmap>
 - <https://tira.mooc.fi/spring-2024>
 - <https://www.crackingthecodinginterview.com>
+- <https://leetcode.com/discuss/general-discussion/1152824/cracking>
 - <https://algo.monster/flowchart>
 
 ## Contents
@@ -97,6 +98,7 @@ Contains but not limited to:
 
 ### Graphs
 
+- [x] Adjacency Matrices
 - [x] Matrix DFS
 - [x] Matrix BFS
 - [x] Adjacency List
