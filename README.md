@@ -4,11 +4,11 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 
 Other Resources (DSA):
 
-- <https://neetcode.io/roadmap>
-- <https://tira.mooc.fi/spring-2024>
-- <https://www.crackingthecodinginterview.com>
-- <https://leetcode.com/discuss/general-discussion/1152824/cracking>
-- <https://algo.monster/flowchart>
+- [NeetCode Roadmap](https://neetcode.io/roadmap)
+- [Data Structures and Algorithms, Spring 2024](https://tira.mooc.fi/spring-2024)
+- [Cracking The Coding Interview](https://www.crackingthecodinginterview.com)
+- [Cracking The Coding Interview 6th Edition In LeetCode](https://leetcode.com/discuss/general-discussion/1152824/cracking)
+- [Algo Flowchart](https://algo.monster/flowchart)
 
 ## Contents
 
