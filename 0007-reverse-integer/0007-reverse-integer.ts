@@ -6,20 +6,13 @@ function reverse(x: number): number {
   const MAX = 2147483647
   const MIN = -2147483648
 
-  let y = Math.abs(x)
-  const stack = []
-  while (y > 0) {
-    stack.push(y % 10)
-    y = Math.trunc(y / 10)
-  }
-
   let result = 0
-  result += stack.pop()
-  let z = 1
-  while (stack.length) {
-    result += stack.pop() * (10 ** z)
+  let y = Math.abs(x)
+  while (y > 0) {
+    const pop = y % 10
+    result = result * 10 + pop
     if (result > MAX || result < MIN) return 0
-    z++
+    y = Math.trunc(y / 10)
   }
 
   return x > 0 ? result : -result
