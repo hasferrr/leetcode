@@ -1,6 +1,5 @@
 function networkDelayTime(times: number[][], n: number, k: number): number {
-  // Adjacency list
-  const adj = new Map<number, ([number, number])[]>()
+  const adj = new Map<number, [number, number][]>()
 
   for (const [u, v, w] of times) {
     if (!adj.has(u)) {
@@ -13,34 +12,37 @@ function networkDelayTime(times: number[][], n: number, k: number): number {
   const minHeap = new MinPriorityQueue({ priority: (n) => n[1] })
   minHeap.enqueue([k, 0])
 
-  // Map of { node: number of path }
-  // const shortestPath = new Map<number, number>()
   const shortestPath = new Set<number>()
-  let maxShortestPath = -1
+  let max = -1
 
   while (!minHeap.isEmpty()) {
-    const { element: [node, weight] } = minHeap.dequeue()
+    const [node, weight] = minHeap.dequeue().element
 
     if (shortestPath.has(node)) {
       continue
     }
 
     shortestPath.add(node)
-    maxShortestPath = Math.max(maxShortestPath, weight)
+    max = Math.max(max, weight)
 
     const neighborList = adj.get(node)
-
     if (!neighborList) {
       continue
     }
 
     for (const [nodeN, weightN] of neighborList) {
-      minHeap.enqueue([nodeN, weightN + weight]);
+      if (shortestPath.has(nodeN)) {
+        continue
+      }
+      minHeap.enqueue([nodeN, weightN + weight])
+      if (shortestPath.size === n) {
+        return max
+      }
     }
   }
 
-  if (shortestPath.size === n && maxShortestPath !== -1) {
-    return maxShortestPath
+  if (shortestPath.size === n) {
+    return max
   }
   return -1
 }
