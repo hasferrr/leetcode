@@ -23,7 +23,7 @@ const prim = (edges: Edge[], start: string): Edge[] => {
     minHeap.enqueue([start, neighbor, neighborWeight])
   }
 
-  while (adj.size !== mst.length && !minHeap.isEmpty()) {
+  while (!minHeap.isEmpty() && visited.size < adj.size) {
     const [src, curr, weight] = minHeap.dequeue()
     if (visited.has(curr)) {
       continue
@@ -37,9 +37,6 @@ const prim = (edges: Edge[], start: string): Edge[] => {
         continue
       }
       minHeap.enqueue([curr, neighbor, neighborWeight])
-      if (adj.size === mst.length) {
-        return mst
-      }
     }
   }
 
