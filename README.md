@@ -105,9 +105,9 @@ Contains but not limited to:
 
 ### Graphs (More)
 
-- [ ] Dijkstra's Algorithm
-- [ ] Prim's Algorithm
-- [ ] Kruskal's Algorithm
+- [x] Dijkstra's Algorithm
+- [x] Prim's Algorithm
+- [x] Kruskal's Algorithm
 - [ ] Topological Sort
 
 ### Dynamic Programming
