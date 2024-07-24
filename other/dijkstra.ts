@@ -31,7 +31,7 @@ const shortestPath = (n: number, edges: number[][], src: number): Shortest => {
     shortest[i] = -1
   }
   for (const [u, v, w] of edges) {
-    adj[u].push({ node: v, w })
+    adj[u].push({ node: v, weight: w })
   }
 
   const minHeap = new MinPriorityQueue<NodeAndWeight>((n) => n.weight)
