@@ -1,3 +1,84 @@
+// Kruskal's Algorithm for MST
+
+class UnionFind {
+  parent: Map<number, number>
+  height: Map<number, number>
+  constructor(n: number) {
+    this.parent = new Map()
+    this.height = new Map()
+    for (let i = 0; i < n; i++) {
+      this.parent.set(i, i)
+      this.height.set(i, 0)
+    }
+  }
+
+  find(n: number): number {
+    const p = this.parent.get(n)
+    if (n === p) {
+      return n
+    }
+    const root = this.find(p)
+    this.parent.set(n, root)
+    return root
+  }
+
+  union(n1: number, n2: number): boolean {
+    const p1 = this.find(n1)
+    const p2 = this.find(n2)
+    if (p1 === p2) return false
+
+    if (this.height.get(p1) > this.height.get(p2)) {
+      this.parent.set(p2, p1)
+    } else if (this.height.get(p1) < this.height.get(p2)) {
+      this.parent.set(p1, p2)
+    } else {
+      this.parent.set(p2, p1)
+      this.height.set(p1, this.height.get(p1) + 1)
+    }
+
+    return true
+  }
+}
+
+function minCostConnectPoints_kruskal(points: number[][]): number {
+  const uf = new UnionFind(points.length)
+  const minHeap = new MinPriorityQueue({
+    priority: (data: {
+      src: number,
+      dest: number,
+      weight: number,
+    }) => data.weight
+  })
+
+  for (let i = 0; i < points.length; i++) {
+    for (let j = 0; j < points.length; j++) {
+      if (i === j) {
+        continue
+      }
+      minHeap.enqueue({
+        src: i,
+        dest: j,
+        weight: distance(points[i], points[j]),
+      })
+    }
+  }
+
+  let count = 0
+  let cost = 0
+
+  while (!minHeap.isEmpty() && count + 1 !== points.length) {
+    const { src, dest, weight } = minHeap.dequeue().element
+    if (!uf.union(src, dest)) {
+      continue
+    }
+    cost += weight
+    count++
+  }
+  return cost
+}
+
+
+
 // Prim's Algorithm for MST
 // All nodes will be wighted undirected connected graph
 
