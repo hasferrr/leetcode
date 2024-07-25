@@ -1,5 +1,7 @@
 function findOrder(numCourses: number, prerequisites: number[][]): number[] {
+  // Adjacency list
   const adj = new Map<number, number[]>()
+
   for (let i = 0; i < numCourses; i++) {
     adj.set(i, [])
   }
@@ -8,12 +10,14 @@ function findOrder(numCourses: number, prerequisites: number[][]): number[] {
   }
 
   const result = []
+
   const visited = new Set<number>()
   const path = new Set<number>()
 
   // Side effect: push course topologically to result
   // return true if no cycle, false otherwise
   const dfs = (course: number): boolean => {
+    // has a cycle?
     if (path.has(course)) {
       return false
     }
