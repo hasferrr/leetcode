@@ -57,7 +57,7 @@ Contains but not limited to:
 ### Trees
 
 - [x] Binary Tree
-- [x] Binary Search Trees
+- [x] Binary Search Trees (BST)
 - [x] BST Insert And Remove
 - [x] Depth-First Search
 - [x] Breadth-First Search
@@ -108,7 +108,7 @@ Contains but not limited to:
 - [x] Dijkstra's Algorithm
 - [x] Prim's Algorithm
 - [x] Kruskal's Algorithm
-- [ ] Topological Sort
+- [x] Topological Sort
 
 ### Dynamic Programming
 
