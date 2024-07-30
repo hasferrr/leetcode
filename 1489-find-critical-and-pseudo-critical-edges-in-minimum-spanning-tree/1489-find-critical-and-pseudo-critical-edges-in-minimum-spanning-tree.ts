@@ -1,4 +1,110 @@
+// Kruskal Algorithm
+class UnionFind {
+  parent: Map<number, number>
+  rank: Map<number, number>
+  constructor(n: number) {
+    this.parent = new Map()
+    this.rank = new Map()
+    for (let i = 0; i < n; i++) {
+      this.parent.set(i, i)
+      this.rank.set(i, 0)
+    }
+  }
+
+  find(n: number): number {
+    const p = this.parent.get(n)
+    if (p === n) {
+      return p
+    }
+    const root = this.find(p)
+    this.parent.set(n, root)
+    return root
+  }
+
+  union(n1: number, n2: number): boolean {
+    const p1 = this.find(n1)
+    const p2 = this.find(n2)
+    if (p1 === p2) return false
+
+    if (this.rank.get(p1) > this.rank.get(p2)) {
+      this.parent.set(p2, p1)
+    } else if (this.rank.get(p1) < this.rank.get(p2)) {
+      this.parent.set(p1, p2)
+    } else {
+      this.parent.set(p2, p1)
+      this.rank.set(p1, this.rank.get(p1) + 1)
+    }
+
+    return true
+  }
+}
+
 function findCriticalAndPseudoCriticalEdges(n: number, edges: number[][]): number[][] {
+  const weightMst = kruskal(null, null)
+  const critical = []
+  const pseudo = []
+
+  for (let i = 0; i < edges.length; i++) {
+    const exclude = kruskal(i, null)
+    if (exclude > weightMst) {
+      critical.push(i)
+      continue
+    }
+    const forced = kruskal(null, i)
+    if (forced === weightMst) {
+      pseudo.push(i)
+    }
+  }
+
+  return [critical, pseudo]
+
+
+  function kruskal(skip: number | null, force: number | null): number {
+    interface Edge {
+      src: number
+      dest: number
+      weight: number
+    }
+
+    const uf = new UnionFind(n)
+    const minHeap = new MinPriorityQueue({
+      priority: (edge: Edge) => edge.weight
+    })
+
+    let weight = 0
+    let count = 0
+
+    // heapify
+    for (let i = 0; i < edges.length; i++) {
+      if (skip === i) continue
+
+      const [src, dest, w] = edges[i]
+      if (force === i) {
+        uf.union(src, dest)
+        weight += w
+        count++
+      } else {
+        minHeap.enqueue({ src, dest, weight: w })
+      }
+    }
+
+    while (!minHeap.isEmpty() && count < n - 1) {
+      const edge: Edge = minHeap.dequeue().element
+      if (uf.union(edge.src, edge.dest)) {
+        weight += edge.weight
+        count++
+      }
+    }
+
+    return count === n - 1 ? weight : Infinity
+  }
+}
+
+
+
+
+// Prim's Algorithm
+function findCriticalAndPseudoCriticalEdges_prim(n: number, edges: number[][]): number[][] {
   const adj = new Map<number, Map<number, number>>()
   for (let i = 0; i < n; i++) {
     adj.set(i, new Map())
@@ -35,7 +141,7 @@ function findCriticalAndPseudoCriticalEdges(n: number, edges: number[][]): numbe
 
   function primsMst(forceEdge: number | null): number {
     const minHeap = new MinPriorityQueue({
-      priority: (item: { dst: number, weight: number, }) => item.weight 
+      priority: (item: { dst: number, weight: number, }) => item.weight
     })
 
     const visited = new Set<number>()
