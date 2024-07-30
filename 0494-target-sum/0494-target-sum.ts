@@ -1,40 +1,37 @@
-// Memoization (Top-down)
+// Memoization
 function findTargetSumWays(nums: number[], target: number): number {
-  const memo: Map<number, number>[] = new Array(nums.length)
-
-  const find = (nums: number[], target: number): number => {
-    if (nums.length === 1) {
-      if (nums[0] === 0 && nums[0] === target) return 2
-      if (nums[0] === target || -nums[0] === target) return 1
-      return 0
-    }
-    const n = nums.pop()
-    if (memo[nums.length - 1] === undefined) {
-      memo[nums.length - 1] = new Map()
-    }
-    if (!memo[nums.length - 1].has(target)) {
-      const map = memo[nums.length - 1]
-      map.set(target, find(nums, target + n) + find(nums, target - n))
-    }
-    const result = memo[nums.length - 1].get(target)
-    nums.push(n)
-    return result
+  const memo = Array(nums.length)
+  for (let i = 0; i < memo.length; i++) {
+    memo[i] = new Map<number, number>()
   }
 
-  return find(nums, target)
+  const find = (i, sum): number => {
+    if (i === nums.length) {
+      if (sum === target) return 1
+      return 0
+    }
+    if (!memo[i].has(sum)) {
+      const res = find(i + 1, sum + nums[i]) + find(i + 1, sum - nums[i])
+      memo[i].set(sum, res)
+    }
+    return memo[i].get(sum)
+  }
+
+  return find(0, 0)
 }
 
 
 // Brute Force
 function findTargetSumWays_bf(nums: number[], target: number): number {
-  if (nums.length === 1) {
-    if (nums[0] === 0 && nums[0] === target) return 2
-    if (nums[0] === target || -nums[0] === target) return 1
-    return 0
+  const find = (i, sum): number => {
+    if (i === nums.length) {
+      if (sum === target) {
+        return 1
+      }
+      return 0
+    }
+    return find(i + 1, sum + nums[i]) +
+      find(i + 1, sum - nums[i])
   }
-  const n = nums.pop()
-  const result = findTargetSumWays(nums, target + n) +
-    findTargetSumWays(nums, target - n)
-  nums.push(n)
-  return result
+  return find(0, 0)
 }
