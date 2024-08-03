@@ -13,13 +13,13 @@ function knapsack(profit: number[], weight: number[], capacity: number) {
     }
   }
 
+  // Backward Iteration in 0-1 Knapsack:
+  // Ensures that while calculating dp[cap],
+  // we are only using values from the previous answer (cap - weight[i])
+  // before including the current item to avoids overwriting the prevoius answer
   for (let i = 1; i < ITEMS; i++) {
-    for (let cap = 1; cap < CAPS; cap++) {
-      const exclude = dp[cap]
-      const include = cap >= weight[i]
-        ? profit[i] + dp[cap - weight[i]]
-        : 0
-      dp[i][cap] = Math.max(exclude, include)
+    for (let cap = capacity; cap >= weight[i]; cap--) {
+      dp[cap] = Math.max(dp[cap], profit[i] + dp[cap - weight[i]])
     }
   }
 
@@ -28,7 +28,7 @@ function knapsack(profit: number[], weight: number[], capacity: number) {
 
 
 // Dynamic Programming
-function knapsack(profit: number[], weight: number[], capacity: number) {
+function knapsack_dp1(profit: number[], weight: number[], capacity: number) {
   const ITEMS = profit.length
   const CAPS = capacity + 1
 
