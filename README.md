@@ -120,8 +120,8 @@ Contains but not limited to:
 
 ### Dynamic Programming (More)
 
-- [ ] 0-1 Knapsack
-- [ ] Unbounded Knapsack
+- [x] 0-1 Knapsack
+- [x] Unbounded Knapsack
 - [ ] Longest Common Subsequence (LCS)
 - [ ] Palindromes
 
