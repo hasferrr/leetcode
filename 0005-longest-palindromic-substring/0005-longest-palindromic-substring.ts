@@ -1,4 +1,33 @@
 function longestPalindrome(s: string): string {
+  const result: [number, number] = [0, -Infinity]
+
+  const countPalindrome = (l: number, r: number): void => {
+    while (r !== s.length && l >= 0) {
+      if (s[l] !== s[r]) return
+      if (r - l > result[1] - result[0]) {
+        result[0] = l
+        result[1] = r
+      }
+      l--
+      r++
+    }
+  }
+
+  const findPalindrome = (i: number): void => {
+    if (i === s.length) return
+    countPalindrome(i, i)
+    countPalindrome(i, i + 1)
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    findPalindrome(i)
+  }
+  return s.slice(result[0], result[1] + 1)
+}
+
+
+// Mutual Recursion
+function longestPalindrome_MR(s: string): string {
   const visited = new Set<number>()
   const result: [number, number] = [0, -Infinity]
 
