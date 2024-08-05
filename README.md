@@ -10,9 +10,10 @@ Other Resources (DSA):
 - [Cracking The Coding Interview 6th Edition In LeetCode](https://leetcode.com/discuss/general-discussion/1152824/cracking)
 - [Algo Flowchart](https://algo.monster/flowchart)
 
-My Notes:
+Notes:
 
 - [DSA - Notion](https://www.notion.so/hasferrr/DSA-22c205f933d64882ac25d6199c0300de)
+- <https://github.com/williamfiset/algorithms>
 
 ## Contents
 
@@ -123,9 +124,11 @@ Contains but not limited to:
 
 ### Dynamic Programming (More)
 
-- [x] 0-1 Knapsack
+- [x] 0/1 Knapsack
 - [x] Unbounded Knapsack
 - [x] Longest Common Subsequence (LCS)
+- [ ] Longest Increasing Subsequence (LIS)
+- [ ] Longest Palindrome Subsequence (LPS)
 - [x] Palindromes
 
 ### Bit Manipulation
