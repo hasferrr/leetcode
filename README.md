@@ -10,6 +10,10 @@ Other Resources (DSA):
 - [Cracking The Coding Interview 6th Edition In LeetCode](https://leetcode.com/discuss/general-discussion/1152824/cracking)
 - [Algo Flowchart](https://algo.monster/flowchart)
 
+My Notes:
+
+- [DSA - Notion](https://www.notion.so/hasferrr/DSA-22c205f933d64882ac25d6199c0300de)
+
 ## Contents
 
 Contains but not limited to:
@@ -59,9 +63,8 @@ Contains but not limited to:
 - [x] Binary Tree
 - [x] Binary Search Trees (BST)
 - [x] BST Insert And Remove
-- [x] Depth-First Search
-- [x] Breadth-First Search
-- [x] BST Sets And Maps
+- [x] Depth-First Search (DFS)
+- [x] Breadth-First Search (BFS)
 
 ### Trees (More)
 
@@ -122,8 +125,8 @@ Contains but not limited to:
 
 - [x] 0-1 Knapsack
 - [x] Unbounded Knapsack
-- [ ] Longest Common Subsequence (LCS)
-- [ ] Palindromes
+- [x] Longest Common Subsequence (LCS)
+- [x] Palindromes
 
 ### Bit Manipulation
 
