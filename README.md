@@ -9,11 +9,7 @@ Other Resources (DSA):
 - [Cracking The Coding Interview](https://www.crackingthecodinginterview.com)
 - [Cracking The Coding Interview 6th Edition In LeetCode](https://leetcode.com/discuss/general-discussion/1152824/cracking)
 - [Algo Flowchart](https://algo.monster/flowchart)
-
-Notes:
-
-- [DSA - Notion](https://www.notion.so/hasferrr/DSA-22c205f933d64882ac25d6199c0300de)
-- <https://github.com/williamfiset/algorithms>
+- [DSA - My Notes on Notion](https://www.notion.so/hasferrr/DSA-22c205f933d64882ac25d6199c0300de)
 
 ## Contents
 
@@ -76,7 +72,7 @@ Contains but not limited to:
 
 ### Backtracking
 
-- [x] Tree Maze
+- [x] Backtracking Search
 - [x] Generative Recursion
 
 ### Backtracking (More)
@@ -97,7 +93,8 @@ Contains but not limited to:
 
 ### Hashing
 
-- [x] Hash Usage
+- [x] HashMap
+- [x] HashSet
 - [x] Hash Implementation
 
 ### Graphs
@@ -131,6 +128,7 @@ Contains but not limited to:
 - [ ] Longest Palindrome Subsequence (LPS)
 - [x] Palindromes
 
-### Bit Manipulation
+### Other
 
-- [x] Bit Operator
+- [x] Bit Manipulation
+- [ ] Greedy Algorithms
