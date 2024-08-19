@@ -8,7 +8,6 @@ Other Resources (DSA):
 - [Data Structures and Algorithms, Spring 2024](https://tira.mooc.fi/spring-2024)
 - [Cracking The Coding Interview](https://www.crackingthecodinginterview.com)
 - [Cracking The Coding Interview 6th Edition In LeetCode](https://leetcode.com/discuss/general-discussion/1152824/cracking)
-- [Algo Flowchart](https://algo.monster/flowchart)
 - [DSA - My Notes on Notion](https://www.notion.so/hasferrr/DSA-22c205f933d64882ac25d6199c0300de)
 
 ## Contents
@@ -132,3 +131,4 @@ Contains but not limited to:
 
 - [x] Bit Manipulation
 - [ ] Greedy Algorithms
+- [ ] Intervals
