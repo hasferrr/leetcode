@@ -6,14 +6,8 @@ function setZeroes(matrix: number[][]): void {
 
   // find zeros
   const topLeft = matrix[0][0]
-  let firstRowZero = matrix[0].some((n) => n === 0)
-  let firstColZero = false
-  for (let i = 0; i < ROWS; i++) {
-    if (matrix[i][0] === 0) {
-      firstColZero = true
-      break
-    }
-  }
+  const firstRowZero = matrix[0].some((n) => n === 0)
+  const firstColZero = matrix.some((row) => row[0] === 0)
 
   for (let i = 1; i < ROWS; i++) {
     for (let j = 1; j < COLS; j++) {
