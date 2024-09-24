@@ -31,11 +31,8 @@ function longestCommonPrefix(arr1: number[], arr2: number[]): number {
   const match = (node1: TrieNode, val: string, prefix: number) => {
     result = Math.max(result, prefix + 1)
     if (prefix === val.length) return
-    for (const [key1, ch1] of node1.children) {
-      if (key1 === val[prefix]) {
-        match(ch1, val, prefix + 1)
-      }
-    }
+    if (!node1.children.has(val[prefix])) return
+    match(node1.children.get(val[prefix]), val, prefix + 1)
   }
   for (const n of arr2) {
     match(trie.root, String(n), 0)
