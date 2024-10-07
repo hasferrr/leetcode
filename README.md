@@ -27,6 +27,7 @@ Contains but not limited to:
 - [x] Sliding Window Variable
 - [x] Two Pointers
 - [x] Prefix Sums
+- [x] Monotonic Stacks
 
 ### Linked Lists
 
@@ -123,8 +124,8 @@ Contains but not limited to:
 - [x] 0/1 Knapsack
 - [x] Unbounded Knapsack
 - [x] Longest Common Subsequence (LCS)
-- [ ] Longest Increasing Subsequence (LIS)
-- [ ] Longest Palindrome Subsequence (LPS)
+- [x] Longest Increasing Subsequence (LIS)
+- [x] Longest Palindrome Subsequence (LPS)
 - [x] Palindromes
 
 ### Other
